@@ -12,9 +12,51 @@
    ========================================================================== */
 
 html {
-  color: #923737;
+  color: #000000;
   font-size: 1em;
   line-height: 1.4;
+  background: lightblue;
+}
+
+aside {
+  margin-top: 5rem;
+  float: left;
+  background: #128989;
+
+}
+main {
+  background: #923737;
+  max-width: 75%;
+  margin: 2em;
+}
+
+main > p{
+  margin-top: 5rem;
+}
+header {
+  background: #2c65a5;
+}
+footer {
+  background: burlywood;
+  float:bottom;
+}
+
+.menu {
+
+
+}
+
+.menu > ul {
+  font-style: italic;
+  font-size: xx-large;
+  float: left;
+
+  margin: 5px;
+}
+#buttons {
+  height: 2em;
+  width: 2em;
+
 }
 
 /*
