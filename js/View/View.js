@@ -10,9 +10,9 @@ class View {
     document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
     document.getElementById("taskSelection").addEventListener("click", this.taskSelection.bind(this));
 
-    document.querySelectorAll("#tasten > *")[0].setAttribute("number", 0);
-    document.querySelectorAll("#tasten > *")[1].setAttribute("number", 1);
-    document.querySelectorAll("#tasten > *")[2].setAttribute("number", 1);
+    document.querySelectorAll("#buttons > *")[0].setAttribute("number", 0);
+    document.querySelectorAll("#buttons > *")[1].setAttribute("number", 1);
+    document.querySelectorAll("#buttons > *")[2].setAttribute("number", 1);
   }
 
   taskSelection(event) {
