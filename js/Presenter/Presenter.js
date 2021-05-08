@@ -5,10 +5,10 @@ class Presenter {
   }
 
   start() {
-    //let a = m.getTask();
-    //document.getElementById("idp").innerHTML = "";
-    //let b = document.getElementById("task");
-    //b.innerHTML = "Aufgabe: " + a;
+    let a = m.getTask();
+    document.getElementById("idp").innerHTML = "";
+    let b = document.getElementById("task");
+    b.innerHTML = "Aufgabe: " + a;
   }
 
   evaluate(answer) {
