@@ -8,11 +8,11 @@ class View {
     document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
     document.getElementById("buttons").addEventListener("mousedown", this.colorOn.bind(this));
     document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
-    document.getElementById("taskSelection").addEventListener("click", this.taskSelection.bind(this));
+   // document.getElementById("taskSelection").addEventListener("click", this.taskSelection.bind(this));
 
-    document.querySelectorAll("#buttons > *")[0].setAttribute("number", 0);
-    document.querySelectorAll("#buttons > *")[1].setAttribute("number", 1);
-    document.querySelectorAll("#buttons > *")[2].setAttribute("number", 1);
+    document.querySelectorAll("div#buttons > *")[0].setAttribute("number", 0);
+    document.querySelectorAll("div#buttons > *")[1].setAttribute("number", 1);
+    document.querySelectorAll("div#buttons > *")[2].setAttribute("number", 1);
   }
 
   taskSelection(event) {
