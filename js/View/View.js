@@ -5,19 +5,19 @@ class View {
   }
 
   setHandler() {
-    document.getElementById("tasten").addEventListener("click", this.evaluate.bind(this), false);
-    document.getElementById("tasten").addEventListener("mousedown", this.colorOn.bind(this));
-    document.getElementById("tasten").addEventListener("mouseup", this.colorOff.bind(this));
-    document.getElementById("aufgabenwahl").addEventListener("click", this.aufgabenWahl.bind(this));
+    document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
+    document.getElementById("buttons").addEventListener("mousedown", this.colorOn.bind(this));
+    document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
+    document.getElementById("taskSelection").addEventListener("click", this.taskSelection.bind(this));
 
     document.querySelectorAll("#tasten > *")[0].setAttribute("number", 0);
     document.querySelectorAll("#tasten > *")[1].setAttribute("number", 1);
     document.querySelectorAll("#tasten > *")[2].setAttribute("number", 1);
   }
 
-  aufgabenWahl(event) {
-    console.log("Aufgabenwahl: " + event.target.type);
-    this.p.aufgabenWahl(1);
+  taskSelection(event) {
+    console.log("Task Selection: " + event.target.type);
+    this.p.taskSelection(1);
   }
 
   evaluate(event) {

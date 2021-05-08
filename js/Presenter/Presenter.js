@@ -14,7 +14,7 @@ class Presenter {
   evaluate(answer) {
     console.log("Presenter -> Antwort: " + answer);
   }
-  aufgabenWahl(nr) {
+  taskSelection(nr) {
     console.log("Presenter -> AufgabenWahl: " + nr);
   }
 }
