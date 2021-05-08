@@ -19,19 +19,45 @@ html {
 }
 
 aside {
-  margin-top: 5rem;
-  float: left;
   background: #128989;
+  min-width: 8em;
+  margin: 0 2em 0 1em ;
+  float: left;
+}
+aside > nav:hover {
+}
+
+aside > nav > ul:hover {
+  font-weight: bold;
+  cursor: pointer;
 
 }
 main {
   background: #923737;
-  max-width: 75%;
-  margin: 2em;
+  max-width: 80%;
+
+
+
 }
 
 main > p{
   margin-top: 5rem;
+  background: dodgerblue;
+}
+#buttons {
+  height: 2em;
+  width: 2em;
+  display: flex;
+
+}
+
+#buttons > button {
+  border-radius: 4px;
+
+
+}
+#button > button:hover {
+
 }
 header {
   background: #2c65a5;
@@ -42,22 +68,26 @@ footer {
 }
 
 .menu {
-
-
+  background: cyan;
+  float: left;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
-.menu > ul {
+.menu > nav > ul {
+
   font-style: italic;
   font-size: xx-large;
   float: left;
-
   margin: 5px;
 }
-#buttons {
-  height: 2em;
-  width: 2em;
+
+.menu > nav > ul:hover {
+  font-weight: bold;
+  cursor: pointer;
 
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
