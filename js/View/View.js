@@ -1,3 +1,4 @@
+"use strict";
 class View {
   constructor(p) {
     this.p = p;
@@ -10,14 +11,22 @@ class View {
     document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
     document.getElementById("taskSelection").addEventListener("click", this.taskSelection.bind(this));
 
-    document.querySelectorAll("#buttons > *")[0].setAttribute("number", 0);
-    document.querySelectorAll("#buttons > *")[1].setAttribute("number", 1);
-    document.querySelectorAll("#buttons > *")[2].setAttribute("number", 1);
+    document.querySelectorAll("button")[0].setAttribute("number", 0);
+    document.querySelectorAll("button")[1].setAttribute("number", 1);
+    document.querySelectorAll("button")[2].setAttribute("number", 1);
   }
 
   taskSelection(event) {
-    console.log("Task Selection: " + event.target.type);
-    this.p.taskSelection(1);
+    let task, taskString;
+    console.log("View -> Task Selection: " + event.target.innerHTML);
+
+    task =  this.p.getNextTask();
+    if(this.p.getTaskType() === "teil-mathe") {
+      taskString = katex.renderToString(task);
+    } else {
+      taskString = task;
+    }
+    document.getElementById("task").innerHTML = taskString;
   }
 
   evaluate(event) {
