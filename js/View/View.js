@@ -40,7 +40,7 @@ class View {
     document.getElementById("button3").setAttribute("answer", a3);
     document.getElementById("button4").setAttribute("answer", a4);
 
-    document.getElementById("task").innerHTML = taskString;
+    document.getElementById("tasks").innerHTML = taskString;
     document.getElementById("button1").innerHTML = a1String;
     document.getElementById("button2").innerHTML = a2String;
     document.getElementById("button3").innerHTML = a3String;
@@ -61,7 +61,7 @@ class View {
 
   displayResultScreen(result) {
     document.getElementById("buttons").setAttribute("style","display:none");
-    document.getElementById("task").innerHTML = result;
+    document.getElementById("tasks").innerHTML = result;
   }
 
 

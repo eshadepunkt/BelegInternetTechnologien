@@ -11,18 +11,80 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+.flex-container{
+  flex-direction: column;
+}
+
 html {
   color: #000000;
   font-size: 1em;
   line-height: 1.4;
-  background: lightblue;
+  background: #272727;
+}
+header {
+  text-align: center;
+  text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
+
+}
+.menu {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.menu > nav > ul {
+  color: #000000;
+  font-size: xx-large;
+  font-family: Broadway;
+  font-weight: bolder;
+  text-shadow: -1px 0 #14A76C, 0 1px #14A76C, 1px 0 #14A76C, 0 -1px #14A76C;
+
+
+  float: left;
+  margin: 5px;
+}
+
+.menu > nav > ul:hover {
+  color: #14A76C;
+  text-shadow: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+body {
+}
+
+article {
+  padding: 1em;
+  margin: 1em;
+  width: 80%;
+  horiz-align: center;
+  text-align: left;
+  text-justify: inter-word;
+
+}
+p {
+
+}
+
+.title {
+  font-size: larger;
+  font-weight: bolder;
+  color: #ffe400;
+  background: #747474;
+
 }
 
 aside {
-  background: #128989;
-  min-width: 8em;
-  margin: 0 2em 0 1em ;
+  vertical-align: center;
   float: left;
+  color: #ffffff;
+  display:  flex;
+
+}
+aside > nav > ul {
+  min-width: 4rem;
+
 }
 aside > nav:hover {
 }
@@ -30,20 +92,24 @@ aside > nav:hover {
 aside > nav > ul:hover {
   font-weight: bold;
   cursor: pointer;
-
-}
-main {
-  background: #923737;
-  max-width: 80%;
-
+  background: #FF652F;
 
 
 }
+#mainArea{
 
-main > p{
-  margin-top: 5rem;
-  background: dodgerblue;
 }
+
+#tasks {
+  color: #FF652F;
+  padding: 1em;
+  margin: 0;
+  vertical-align: center;
+  display: flex;
+  background: rgba(116, 116, 116, 0.09);
+
+}
+
 #buttons {
   height: 2em;
   width: 2em;
@@ -59,34 +125,14 @@ main > p{
 #button > button:hover {
 
 }
-header {
-  background: #2c65a5;
-}
+
 footer {
-  background: burlywood;
+  background: #747474;
   float:bottom;
 }
 
-.menu {
-  background: cyan;
-  float: left;
-  width: 100%;
-  margin-bottom: 3rem;
-}
 
-.menu > nav > ul {
 
-  font-style: italic;
-  font-size: xx-large;
-  float: left;
-  margin: 5px;
-}
-
-.menu > nav > ul:hover {
-  font-weight: bold;
-  cursor: pointer;
-
-}
 
 
 /*

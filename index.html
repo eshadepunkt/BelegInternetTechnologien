@@ -35,11 +35,11 @@
 </head>
 
 <body>
-  <header>
+  <header class="title">
     <h1> Das ist die Überschrift</h1>
   </header>
 
-  <main>
+  <main class="flex-container">
     <div class="menu" id="taskSelection">
       <nav>
         <ul id="teil-mathe">Mathe</ul>
@@ -59,20 +59,30 @@
       </nav>
     </aside>
 
-    <div>
-      <p id="task">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    <article id="mainArea">
+      <section class="title">
+        Frage 1: lorem ipsum
+      </section>
+      <section id="tasks">
+
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
         Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
       </p>
-
-      <div id="buttons">
-        <button id="button1" content="Test1">Test1</button>
-        <button id="button2" content="Test2">Test2</button>
-        <button id="button3" content="Test3">Test3</button>
-        <button id="button4" content="Test4">Test4</button>
-
-      </div>
-    </div>
+      </section>
+      <section>
+        <div id="buttons">
+          <button id="button1" content="Test1">Test1</button>
+          <button id="button2" content="Test2">Test2</button>
+          <button id="button3" content="Test3">Test3</button>
+          <button id="button4" content="Test4">Test4</button>
+        </div>
+        <div id="result">
+          <button id="next" content="Nächste Frage >">Nächste Frage ></button>
+          <button id="showResults" content="Quiz beenden">Quiz beende</button>
+        </div>
+      </section>
+    </article>
   </main>
 
   <footer>
