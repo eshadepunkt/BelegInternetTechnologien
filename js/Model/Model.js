@@ -2,6 +2,8 @@
 class Model {
   constructor() {
     this.loadTasks();
+    this.currentTask = null;
+    this.serverTaskCount = 0;
   }
 
   loadTasks() {
@@ -30,14 +32,40 @@ class Model {
   }
 
   getTaskCount(taskType) {
-    return this.tasks[taskType].length;
+    if(taskType === "server") {
+      return this.serverTaskCount;
+    }
+    else {
+      return this.tasks[taskType].length;
+    }
+
   }
 
   //returns the task and removes it from the task array
   getTask(taskType, number) {
-    let retTask = this.tasks[taskType][number];
-    this.tasks[taskType].splice(number,1);
-    return retTask;
+    if(taskType === "server") {
+      //TODO make AJAX request to get task
+    }
+    else {
+      let retTask = this.tasks[taskType][number];
+      this.tasks[taskType].splice(number,1);
+      this.currentTask = retTask;
+      return retTask;
+    }
+  }
+
+  checkAnswer(taskType, idx) {
+    if(taskType === "server") {
+      //TODO Make AJAX request to check answer
+    }
+    else {
+      if(idx === 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
   }
 
 }
