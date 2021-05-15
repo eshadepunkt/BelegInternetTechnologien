@@ -24,6 +24,7 @@ html {
 header {
   text-align: center;
   text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
+  flex: content-box;
 
 }
 .menu {
@@ -38,8 +39,6 @@ header {
   font-family: Broadway;
   font-weight: bolder;
   text-shadow: -1px 0 #14A76C, 0 1px #14A76C, 1px 0 #14A76C, 0 -1px #14A76C;
-
-
   float: left;
   margin: 5px;
 }
@@ -49,6 +48,12 @@ header {
   text-shadow: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+.menu > nav > ul:focus {
+  color: #14A76C;
+  text-shadow: none;
+  font-weight: bold;
 }
 
 body {
@@ -61,6 +66,7 @@ article {
   horiz-align: center;
   text-align: left;
   text-justify: inter-word;
+  display: flex;
 
 }
 p {
@@ -74,6 +80,7 @@ p {
   background: #747474;
 
 }
+
 
 aside {
   vertical-align: center;
@@ -93,8 +100,12 @@ aside > nav > ul:hover {
   font-weight: bold;
   cursor: pointer;
   background: #FF652F;
+}
 
-
+.selectCategory {
+  font-weight: bold;
+  cursor: pointer;
+  background: #FF652F;
 }
 #mainArea{
 
@@ -128,8 +139,9 @@ aside > nav > ul:hover {
 
 footer {
   background: #747474;
-  float:bottom;
+  display: block;
 }
+
 
 
 
