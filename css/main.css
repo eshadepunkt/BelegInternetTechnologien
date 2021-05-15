@@ -139,7 +139,7 @@ aside > nav > ul:hover {
 
 footer {
   background: #747474;
-  display: block;
+  display: flex;
 }
 
 

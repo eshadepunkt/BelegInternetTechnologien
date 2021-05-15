@@ -9,9 +9,9 @@ class View {
     document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
     //document.getElementById("buttons").addEventListener("mousedown", this.colorOn.bind(this));
     //document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
-    let taskSel = document.querySelectorAll("div#taskSelection > *");
+    let taskSel = document.querySelectorAll("div#taskSelection > nav > *");
     for (let i = 0; i < taskSel.length; i++) {
-      taskSel[i].addEventListener("click", this.taskSelection.bind(this));
+      taskSel[i].addEventListener("click", this.taskTypeSelection.bind(this));
     }
 
   }
@@ -66,10 +66,11 @@ class View {
 
 
   //TODO Change Task selection to work properly
-  taskSelection(event) {
+  taskTypeSelection(event) {
     let task, taskString;
-    console.log("View -> Task Selection: " + event.target.id)
-
+    console.log("View -> Task Selection: " + event.target.id);
+    document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
+    event.target.classList.add("selectCategory");
     this.p.changeTaskType(event.target.id);
   }
 
