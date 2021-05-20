@@ -10,13 +10,14 @@ class Presenter {
     this.v = v;
   }
 
-  getTaskType() {
-    return this.currentTaskType;
-  }
-
   start() {
     this.currentTaskType = "teil-mathe";
     this.loadTask();
+    this.v.setup();
+  }
+
+  getTaskType() {
+    return this.currentTaskType;
   }
 
   loadTask() {
@@ -25,11 +26,8 @@ class Presenter {
 
     let answers = [0,1,2,3];
     let a1 = task["a"][answers.splice(this.getRandomInt(3),1)];
-    console.log(answers.length);
     let a2 = task["a"][answers.splice(this.getRandomInt(2),1)];
-    console.log(answers.length);
     let a3 = task["a"][answers.splice(this.getRandomInt(1),1)];
-    console.log(answers.length);
     let a4 = task["a"][answers[0]];
 
     this.v.displayTask(task["t"], a1, a2, a3, a4);
@@ -51,7 +49,7 @@ class Presenter {
 
   changeTaskType (taskType) {
     this.currentTaskType = taskType;
-    this.loadTask()
+    this.loadTask();
   }
 
 

@@ -16,6 +16,11 @@ class View {
 
   }
 
+  setup() {
+    document.getElementById("result").setAttribute("style","display:none");
+    document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
+  }
+
   displayTask (task, a1, a2, a3, a4) {
     let taskString, a1String, a2String, a3String, a4String;
     if(this.p.getTaskType() === "teil-mathe") {
@@ -61,6 +66,7 @@ class View {
 
   displayResultScreen(result) {
     document.getElementById("buttons").setAttribute("style","display:none");
+    document.getElementById("result").setAttribute("style","display:inline");
     document.getElementById("tasks").innerHTML = result;
   }
 
@@ -74,22 +80,4 @@ class View {
     this.p.changeTaskType(event.target.id);
   }
 
-
-
-  colorOn(event) {
-    if (event.target.nodeName.toLowerCase() === "button") {
-      this.color = event.target.style.backgroundColor;
-      console.log("colorOn: " + event.type + " Color: " + this.color);
-      if (event.target.attributes.getNamedItem("number").value === "0") {
-        event.target.style.backgroundColor = "green";
-      } else {
-        event.target.style.backgroundColor = "red";
-      }
-    }
-  }
-
-  colorOff(event) {
-    console.log("colorOff: "+ event.type + " Color: " + this.color);
-    event.target.style.backgroundColor = this.color;
-  }
 }
