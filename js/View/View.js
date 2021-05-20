@@ -7,8 +7,9 @@ class View {
 
   setHandler() {
     document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
-    //document.getElementById("buttons").addEventListener("mousedown", this.colorOn.bind(this));
-    //document.getElementById("buttons").addEventListener("mouseup", this.colorOff.bind(this));
+    document.getElementById("next").addEventListener("click", this.p.loadTask.bind(this.p), false);
+    document.getElementById("end").addEventListener("click", this.p.endQuiz.bind(this.p), false);
+
     let taskSel = document.querySelectorAll("div#taskSelection > nav > *");
     for (let i = 0; i < taskSel.length; i++) {
       taskSel[i].addEventListener("click", this.taskTypeSelection.bind(this));
@@ -38,6 +39,7 @@ class View {
       a4String = a4;
     }
 
+    document.getElementById("result").setAttribute("style","display:none");
     document.getElementById("buttons").setAttribute("style","display:inline");
 
     document.getElementById("button1").setAttribute("answer", a1);
@@ -64,16 +66,27 @@ class View {
     }
   }
 
-  displayResultScreen(result) {
+  displayResultScreen(result, finalTask) {
     document.getElementById("buttons").setAttribute("style","display:none");
     document.getElementById("result").setAttribute("style","display:inline");
     document.getElementById("tasks").innerHTML = result;
+    if(finalTask) {
+      document.getElementById("next").setAttribute("style", "display:none");
+      document.getElementById("tasks").innerHTML += "  Anderes Thema wählen oder";
+    }
+
+  }
+
+  displayEndScreen() {
+    document.getElementById("result").setAttribute("style","display:none");
+    document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch!";
   }
 
 
   //TODO Change Task selection to work properly
   taskTypeSelection(event) {
-    let task, taskString;
+    document.getElementById("next").setAttribute("style", "display:inline");
+
     console.log("View -> Task Selection: " + event.target.id);
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
     event.target.classList.add("selectCategory");

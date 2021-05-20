@@ -35,16 +35,25 @@ class Presenter {
 
   //TODO evaluating the answer and changing progress
   evaluate(answer) {
+    let finalTask = false;
+    if(this.m.getTaskCount(this.currentTaskType) === 0)
+      finalTask = true;
+
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);
+
     if(this.m.checkAnswer(this.currentTaskType, answerIdx)) {
       console.log("correct");
-      this.v.displayResultScreen("Richtig! :)");
+      this.v.displayResultScreen("Richtig! :)", finalTask);
     }
     else {
       console.log("wrong");
-      this.v.displayResultScreen("Falsch! :(");
+      this.v.displayResultScreen("Falsch! :(", finalTask);
     }
+  }
+
+  endQuiz() {
+    this.v.displayEndScreen();
   }
 
   changeTaskType (taskType) {
