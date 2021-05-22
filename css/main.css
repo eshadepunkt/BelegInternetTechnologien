@@ -26,10 +26,10 @@
 }
 
 html {
-  color: #000000;
+  color: #FFFFFF;
   font-size: 1em;
   line-height: 1.4;
-  background: #272727;
+  background: #24305e;
   font-family: "Segoe UI Semibold";
 }
 header {
@@ -42,7 +42,8 @@ header {
   width: 100%;
   display: flex;
   margin-bottom: 1rem;
-  text-shadow: -1px 0 #14A76C, 0 1px #14A76C, 1px 0 #14A76C, 0 -1px #14A76C;
+  background: #374785;
+
 
 }
 
@@ -54,18 +55,18 @@ header {
 }
 
 .menu > nav > ul:hover {
-  color: #14A76C;
+  color: #F8E9A1;
   text-shadow: none;
   font-weight: bold;
   cursor: pointer;
 }
 
 .menu > nav > ul:focus {
-  color: #14A76C;
+  color: #F8E9A1;
   font-weight: bold;
 }
 .selectCategory {
-  color: #14A76C;
+  color: #F8E9A1;
   text-shadow: none;
 
 }
@@ -90,7 +91,8 @@ p {
 .title {
   font-size: larger;
   font-weight: bolder;
-  color: #ffe400;
+  background: #374785;
+  color: #a8d0e6;
 
 }
 
@@ -112,21 +114,22 @@ aside > nav:hover {
 aside > nav > ul:hover {
   font-weight: bold;
   cursor: pointer;
-  background: #FF652F;
+  background: #F8E9A1;
 }
 
 
 #mainArea{
+  background: #F76c6c;
 
 }
 
 #tasks {
-  color: #FF652F;
+  color: #000000;
   padding: 1em;
   margin: 0;
   vertical-align: center;
   display: flex;
-  background: rgba(116, 116, 116, 0.09);
+  background: #a8d0e6;
 
 }
 
@@ -134,16 +137,19 @@ aside > nav > ul:hover {
   height: 2em;
   width: 2em;
   display: flex;
+  margin: 1rem;
 
 
 }
 
 #buttons > button {
   border-radius: 4px;
-
-
+  background: #F8E9A1;
+  border: none;
+  padding: 1rem;
 }
 #button > button:hover {
+  background: #F76c6c;
 
 }
 
@@ -152,6 +158,10 @@ footer {
   display: flex;
 }
 
+.AcknowledgementIcon {
+  display: block;
+  icon: url('/img/check-mark.png');
+}
 
 
 
