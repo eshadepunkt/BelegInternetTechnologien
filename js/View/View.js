@@ -22,7 +22,7 @@ class View {
     document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
   }
 
-  displayTask (task, a1, a2, a3, a4) {
+  displayTask (title, task, a1, a2, a3, a4) {
     let taskString, a1String, a2String, a3String, a4String;
     if(this.p.getTaskType() === "teil-mathe") {
       taskString = katex.renderToString(task);
@@ -47,6 +47,7 @@ class View {
     document.getElementById("button3").setAttribute("answer", a3);
     document.getElementById("button4").setAttribute("answer", a4);
 
+    document.getElementById("title").innerHTML = title;
     document.getElementById("tasks").innerHTML = taskString;
     document.getElementById("button1").innerHTML = a1String;
     document.getElementById("button2").innerHTML = a2String;
