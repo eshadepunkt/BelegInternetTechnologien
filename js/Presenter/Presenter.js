@@ -3,6 +3,7 @@ class Presenter {
   constructor() {
     this.currentTaskType = null;
     this.currentTask = null;
+    this.currentTaskWasSolved = false;
   }
 
   setModelAndView(m, v) {
@@ -23,6 +24,7 @@ class Presenter {
   loadTask() {
     let task = this.getNextTask();
     this.currentTask = task;
+    this.currentTaskWasSolved = false;
 
     let answers = [0,1,2,3];
     let a1 = task["a"][answers.splice(this.getRandomInt(3),1)];
@@ -36,8 +38,11 @@ class Presenter {
   //TODO evaluating the answer and changing progress
   evaluate(answer) {
     let finalTask = false;
-    if(this.m.getTaskCount(this.currentTaskType) === 0)
+    if(this.m.getTaskCount(this.currentTaskType) === 1)
       finalTask = true;
+
+
+    this.currentTaskWasSolved = true;
 
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);

@@ -3,12 +3,11 @@ class Model {
   constructor() {
     this.loadTasks();
     this.currentTask = null;
+    this.currentTaskType = null;
     this.serverTaskCount = 0;
   }
 
   loadTasks() {
-    //TODO load tasks from JSON file
-
     this.tasks = {
       "teil-mathe": [
         {t:"x^2+x^2\\enspace=\\enspace?", a:["2x^2","x^4","x^8","2x^4"]},
@@ -48,8 +47,8 @@ class Model {
     }
     else {
       let retTask = this.tasks[taskType][number];
-      this.tasks[taskType].splice(number,1);
       this.currentTask = retTask;
+      this.currentTaskType = taskType;
       return retTask;
     }
   }
@@ -59,6 +58,7 @@ class Model {
       //TODO Make AJAX request to check answer
     }
     else {
+      this.removeCurrentTask();
       if(idx === 0) {
         return true;
       }
@@ -66,6 +66,11 @@ class Model {
         return false;
       }
     }
+  }
+
+  removeCurrentTask() {
+    let idx = this.tasks[this.currentTaskType].indexOf(this.currentTask);
+    this.tasks[this.currentTaskType].splice(idx,1);
   }
 
 }
