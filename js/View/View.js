@@ -22,7 +22,7 @@ class View {
     document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
   }
 
-  displayTask (task, a1, a2, a3, a4) {
+  displayTask (title, task, a1, a2, a3, a4) {
     let taskString, a1String, a2String, a3String, a4String;
     if(this.p.getTaskType() === "teil-mathe") {
       taskString = katex.renderToString(task);
@@ -47,6 +47,7 @@ class View {
     document.getElementById("button3").setAttribute("answer", a3);
     document.getElementById("button4").setAttribute("answer", a4);
 
+    document.getElementById("title").innerHTML = title;
     document.getElementById("tasks").innerHTML = taskString;
     document.getElementById("button1").innerHTML = a1String;
     document.getElementById("button2").innerHTML = a2String;
@@ -77,9 +78,16 @@ class View {
 
   }
 
-  displayEndScreen() {
+  displayEndScreen(total, solved, correct, percent) {
+    document.getElementById("teil-mathe").setAttribute("style","pointer-events: none");
+    document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: none");
+    document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
+    document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
+
     document.getElementById("result").setAttribute("style","display:none");
-    document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch!";
+    document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch! Du hast " + correct + " von " + solved + " Aufgaben richtig beantwortet! " +
+    "Das sind " + percent + " %";
+
   }
 
 
@@ -97,6 +105,7 @@ class View {
     document.getElementById(taskType).innerHTML += " <i class=\"fas fa-check-circle\"></i>";
     document.getElementById(taskType).classList.remove("selectCategory");
     document.getElementById(taskType).classList.add("finishedCategory");
+    document.getElementById(taskType).setAttribute("style","pointer-events: none");
   }
 
 }

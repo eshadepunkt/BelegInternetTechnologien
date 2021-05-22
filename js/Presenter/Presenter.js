@@ -3,6 +3,8 @@ class Presenter {
   constructor() {
     this.currentTaskType = null;
     this.currentTask = null;
+    this.tasksSolved = 0;
+    this.tasksCorrect = 0;
   }
 
   setModelAndView(m, v) {
@@ -12,8 +14,9 @@ class Presenter {
 
   start() {
     this.currentTaskType = "teil-mathe";
-    this.loadTask();
+    this.totalTaskCount = this.m.getTotalTaskCount();
     this.v.setup();
+    this.loadTask();
   }
 
   getTaskType() {
@@ -23,7 +26,6 @@ class Presenter {
   loadTask() {
     let task = this.getNextTask();
     this.currentTask = task;
-    this.currentTaskWasSolved = false;
 
     let answers = [0,1,2,3];
     let a1 = task["a"][answers.splice(this.getRandomInt(3),1)];
@@ -31,7 +33,8 @@ class Presenter {
     let a3 = task["a"][answers.splice(this.getRandomInt(1),1)];
     let a4 = task["a"][answers[0]];
 
-    this.v.displayTask(task["t"], a1, a2, a3, a4);
+    let title = "Frage " + (this.tasksSolved + 1) + ": " + task["title"];
+    this.v.displayTask(title,task["t"], a1, a2, a3, a4);
   }
 
   //TODO evaluating the answer and changing progress
@@ -40,14 +43,14 @@ class Presenter {
     if(this.m.getTaskCount(this.currentTaskType) === 1)
       finalTask = true;
 
-
-    this.currentTaskWasSolved = true;
+    this.tasksSolved++;
 
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);
 
     if(this.m.checkAnswer(this.currentTaskType, answerIdx)) {
       console.log("correct");
+      this.tasksCorrect++;
       this.v.displayResultScreen("Richtig! :)", finalTask);
     }
     else {
@@ -58,10 +61,14 @@ class Presenter {
     if(finalTask) {
       this.v.closeTaskType(this.currentTaskType);
     }
+
+    console.log(this.totalTaskCount);
+    console.log(this.tasksSolved);
+    console.log(this.tasksCorrect);
   }
 
   endQuiz() {
-    this.v.displayEndScreen();
+    this.v.displayEndScreen(this.totalTaskCount, this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
   }
 
   changeTaskType (taskType) {
