@@ -3,7 +3,6 @@ class Presenter {
   constructor() {
     this.currentTaskType = null;
     this.currentTask = null;
-    this.currentTaskWasSolved = false;
   }
 
   setModelAndView(m, v) {
@@ -54,6 +53,10 @@ class Presenter {
     else {
       console.log("wrong");
       this.v.displayResultScreen("Falsch! :(", finalTask);
+    }
+
+    if(finalTask) {
+      this.v.closeTaskType(this.currentTaskType);
     }
   }
 

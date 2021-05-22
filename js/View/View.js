@@ -93,4 +93,10 @@ class View {
     this.p.changeTaskType(event.target.id);
   }
 
+  closeTaskType(taskType) {
+    document.getElementById(taskType).innerHTML += " <i class=\"fas fa-check-circle\"></i>";
+    document.getElementById(taskType).classList.remove("selectCategory");
+    document.getElementById(taskType).classList.add("finishedCategory");
+  }
+
 }
