@@ -30,6 +30,10 @@ class Model {
     };
   }
 
+  getTotalTaskCount() {
+    return this.tasks["teil-mathe"].length + this.tasks["teil-internettechnologien"].length + this.tasks["teil-allgemein"].length;
+  }
+
   getTaskCount(taskType) {
     if(taskType === "server") {
       return this.serverTaskCount;

@@ -77,9 +77,16 @@ class View {
 
   }
 
-  displayEndScreen() {
+  displayEndScreen(total, solved, correct, percent) {
+    document.getElementById("teil-mathe").setAttribute("style","pointer-events: none");
+    document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: none");
+    document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
+    document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
+
     document.getElementById("result").setAttribute("style","display:none");
-    document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch!";
+    document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch! Du hast " + correct + " von " + solved + " Aufgaben richtig beantwortet! " +
+    "Das sind " + percent + " %";
+
   }
 
 
@@ -97,6 +104,7 @@ class View {
     document.getElementById(taskType).innerHTML += " <i class=\"fas fa-check-circle\"></i>";
     document.getElementById(taskType).classList.remove("selectCategory");
     document.getElementById(taskType).classList.add("finishedCategory");
+    document.getElementById(taskType).setAttribute("style","pointer-events: none");
   }
 
 }
