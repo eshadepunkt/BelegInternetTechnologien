@@ -37,7 +37,6 @@ class Presenter {
     this.v.displayTask(title,task["t"], a1, a2, a3, a4);
   }
 
-  //TODO evaluating the answer and changing progress
   evaluate(answer) {
     let finalTask = false;
     if(this.m.getTaskCount(this.currentTaskType) === 1)
@@ -51,11 +50,11 @@ class Presenter {
     if(this.m.checkAnswer(this.currentTaskType, answerIdx)) {
       console.log("correct");
       this.tasksCorrect++;
-      this.v.displayResultScreen("Richtig! :)", finalTask);
+      this.v.displayResultScreen("Richtig! ",true, finalTask);
     }
     else {
       console.log("wrong");
-      this.v.displayResultScreen("Falsch! :(", finalTask);
+      this.v.displayResultScreen("Falsch! ", false, finalTask);
     }
 
     if(finalTask) {

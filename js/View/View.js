@@ -47,6 +47,17 @@ class View {
     document.getElementById("button3").setAttribute("answer", a3);
     document.getElementById("button4").setAttribute("answer", a4);
 
+    if(document.getElementById("tasklist").lastElementChild != null) {
+      if (document.getElementById("tasklist").lastElementChild.attributes.getNamedItem("solved").value === "false") {
+        document.getElementById("tasklist").lastElementChild.remove();
+        console.log("removed");
+      }
+    }
+    let listitem = document.createElement("UL");
+    listitem.innerHTML = title;
+    listitem.setAttribute("solved", "false");
+    document.getElementById("tasklist").appendChild(listitem);
+
     document.getElementById("title").innerHTML = title;
     document.getElementById("tasks").innerHTML = taskString;
     document.getElementById("button1").innerHTML = a1String;
@@ -67,10 +78,15 @@ class View {
     }
   }
 
-  displayResultScreen(result, finalTask) {
+  displayResultScreen(resultText, result, finalTask) {
     document.getElementById("buttons").setAttribute("style","display:none");
     document.getElementById("result").setAttribute("style","display:inline");
-    document.getElementById("tasks").innerHTML = result;
+    document.getElementById("tasks").innerHTML = resultText;
+    if(result) {
+      document.getElementById("tasklist").lastChild.innerHTML += " <i class=\"fas fa-check-circle\"></i>";
+    }
+    document.getElementById("tasklist").lastChild.setAttribute("solved", "true");
+
     if(finalTask) {
       document.getElementById("next").setAttribute("style", "display:none");
       document.getElementById("tasks").innerHTML += "  Anderes Thema wählen oder";
@@ -91,7 +107,6 @@ class View {
   }
 
 
-  //TODO Change Task selection to work properly
   taskTypeSelection(event) {
     document.getElementById("next").setAttribute("style", "display:inline");
 
