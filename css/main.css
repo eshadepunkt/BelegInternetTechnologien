@@ -17,11 +17,12 @@
 .flex-container{
   flex-direction: column;
   flex-flow: row wrap;
-
+  display: flex;
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 .flex-container > * {
-
   flex-grow: 1;
 }
 section {
@@ -30,7 +31,10 @@ section {
   align-items: center;
   vertical-align: center;
   horiz-align: center;
+  justify-content: center;
+  display: inline-flex;
 }
+
 
 html {
   color: #FFFFFF;
@@ -50,7 +54,10 @@ header {
   display: flex;
   margin-bottom: 1rem;
   color: #a8d0e6;
-  background: #374785;
+  background: #F76c6c;
+  font-size: 8px;
+  padding: 2rem;
+  border-radius: 0.5rem;
 
 
 }
@@ -60,6 +67,7 @@ header {
   font-weight: bolder;
   float: left;
   margin: 5px;
+  padding: 1rem;
 }
 
 .menu > nav > ul:hover {
@@ -76,6 +84,8 @@ header {
 .selectCategory {
   color: #F8E9A1;
   text-shadow: none;
+  background: #24305e;
+  border-radius: 0.5rem;
 
 }
 .finishedCategory {
@@ -87,11 +97,10 @@ header {
 }
 
 body {
+
 }
 
 article {
-  padding: 1em;
-  margin: 1em;
 
   horiz-align: center;
   text-align: left;
@@ -99,6 +108,10 @@ article {
   display: flex;
 
 }
+article > section {
+  margin: 1rem;
+}
+
 p {
 
 }
@@ -109,22 +122,29 @@ p {
   color: #a8d0e6;
   padding: 1.5rem;
   flex: border-box;
+  background: #24305e;
+  border-radius: 0.5rem;
 }
 
 
 aside {
   vertical-align: center;
+  align-items: center;
   float: left;
   color: #ffffff;
+  background: #F76c6c;
+  display: flex;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 aside > * {
 
-  display: flex;
   flex-flow: column wrap;
+  display: flex;
 }
 aside > nav > ul {
-  min-width: 4rem;
-
+margin: 0;
 }
 aside > nav:hover {
 }
@@ -132,13 +152,19 @@ aside > nav:hover {
 aside > nav > ul:hover {
   font-weight: bold;
   cursor: pointer;
-  border: 2px solid #F8E9A1;
+  background: #F8E9A1;
 }
 
 
 #mainArea{
   background: #F76c6c;
   font-size: 18px;
+  flex-flow: column wrap;
+  margin: 0rem 0rem 1rem 0rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
+
 }
 
 #tasks {
@@ -147,13 +173,14 @@ aside > nav > ul:hover {
   align-items: center;
   vertical-align: center;
   horiz-align: center;
-  min-width: 5em;
+  min-width: 1em;
   display: flex;
   padding:  15px 32px;
-  border: 2px solid #F8E9A1;
+  background: #24305e;
   border-radius: 0.5rem;
 
 }
+
 
 #buttons {
 
@@ -162,7 +189,7 @@ aside > nav > ul:hover {
 
 }
 button {
-  padding: 15px 32px;
+  padding: 8px 16px;
   border-radius: 4px;
   background: #F76c6c;
   border: 2px solid #F8E9A1;
@@ -174,13 +201,13 @@ button {
 
 
 button:hover {
-  background: #F8E9A1;
+  background: #24305e;
 
   cursor: pointer;
   border: 2px solid #F76c6c;
-  color: #24305e;
+  color: #F8E9A1;
   border-radius: 0.5rem;
-  padding: 15px 32px;
+  padding: 8px 16px;
   margin: 0.2rem;
 
 }
@@ -193,9 +220,11 @@ footer {
   background: #374785;
   padding: 1rem;
   align-items: center;
+  justify-content: center;
   color: #a8d0e6;
   width: 100%;
   display: flex;
+  border-radius: 0.5rem;
 }
 
 
@@ -370,6 +399,9 @@ textarea {
   aside {
     background: #374785;
     width: 100%;
+    justify-content: center;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
   aside > * {
     flex-flow: row;
@@ -385,11 +417,20 @@ textarea {
   }
 
   #mainArea {
-    float: left;
+   flex-flow: column;
+    display: flex;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
   }
   section.title {
-    padding: 0;
-    display: flex;
+    flex-flow: column;
+    padding: 1rem;
+  }
+
+  #tasks {
+    float: left;
+    flex-flow: row;
+
   }
 
   .menu > nav {
