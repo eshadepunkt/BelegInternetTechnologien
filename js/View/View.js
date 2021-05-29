@@ -13,8 +13,8 @@ class View {
     let taskSel = document.querySelectorAll("div#taskSelection > nav > *");
     for (let i = 0; i < taskSel.length; i++) {
       taskSel[i].addEventListener("click", this.taskTypeSelection.bind(this));
+      taskSel[i].lastElementChild.setAttribute("style", "pointer-events:none");
     }
-
   }
 
   setup() {
@@ -22,7 +22,7 @@ class View {
     document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
   }
 
-  displayTask (title, task, a1, a2, a3, a4) {
+  displayTask (title, number, task, a1, a2, a3, a4) {
     let taskString, a1String, a2String, a3String, a4String;
     if(this.p.getTaskType() === "teil-mathe") {
       taskString = katex.renderToString(task);
@@ -50,12 +50,13 @@ class View {
     if(document.getElementById("tasklist").lastElementChild != null) {
       if (document.getElementById("tasklist").lastElementChild.attributes.getNamedItem("solved").value === "false") {
         document.getElementById("tasklist").lastElementChild.remove();
-        console.log("removed");
       }
     }
     let listitem = document.createElement("UL");
     listitem.innerHTML = title;
     listitem.setAttribute("solved", "false");
+    listitem.setAttribute("number", number.toString());
+    listitem.setAttribute("style", "pointer-events:none");
     document.getElementById("tasklist").appendChild(listitem);
 
     document.getElementById("title").innerHTML = title;
@@ -71,6 +72,25 @@ class View {
     }
   }
 
+  displayPrevTask(task) {
+    let taskString, answerString;
+    if(task["type"] === "teil-mathe") {
+      taskString = katex.renderToString(task["task"]["t"]);
+      answerString = katex.renderToString(task["answer"]);
+    }
+    else {
+      taskString = task["task"]["t"];
+      answerString = task["answer"];
+    }
+
+    document.getElementById("result").setAttribute("style","display:none");
+    document.getElementById("buttons").setAttribute("style","display:none");
+
+    document.getElementById("title").innerHTML = task["task"]["title"];
+    document.getElementById("tasks").innerHTML = taskString + "  " + "Die gegebene Antwort war: " + answerString;
+
+  }
+
   evaluate(event) {
     console.log("View -> Evaluate: " + event.type + " " + event.target.nodeName);
     if (event.target.nodeName.toLowerCase() === "button") {
@@ -83,9 +103,11 @@ class View {
     document.getElementById("result").setAttribute("style","display:inline");
     document.getElementById("tasks").innerHTML = resultText;
     if(result) {
-      document.getElementById("tasklist").lastChild.innerHTML += " <i class=\"fas fa-check-circle\"></i>";
+      document.getElementById("tasklist").lastElementChild.innerHTML += " <i class=\"fas fa-check-circle\"></i>";
     }
-    document.getElementById("tasklist").lastChild.setAttribute("solved", "true");
+    document.getElementById("tasklist").lastElementChild.setAttribute("solved", "true");
+    document.getElementById("tasklist").lastElementChild.setAttribute("style", "pointer-events:auto");
+    document.getElementById("tasklist").lastElementChild.addEventListener("click", this.p.loadPrevTask.bind(this.p));
 
     if(finalTask) {
       document.getElementById("next").setAttribute("style", "display:none");
@@ -99,6 +121,8 @@ class View {
     document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: none");
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
+
+    document.getElementById("title").setAttribute("style","display:none");
 
     document.getElementById("result").setAttribute("style","display:none");
     document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch! Du hast " + correct + " von " + solved + " Aufgaben richtig beantwortet! " +

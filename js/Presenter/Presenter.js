@@ -5,6 +5,7 @@ class Presenter {
     this.currentTask = null;
     this.tasksSolved = 0;
     this.tasksCorrect = 0;
+    this.prevTasks = [];
   }
 
   setModelAndView(m, v) {
@@ -34,7 +35,15 @@ class Presenter {
     let a4 = task["a"][answers[0]];
 
     let title = "Frage " + (this.tasksSolved + 1) + ": " + task["title"];
-    this.v.displayTask(title,task["t"], a1, a2, a3, a4);
+    this.v.displayTask(title,this.tasksSolved, task["t"], a1, a2, a3, a4);
+  }
+
+  loadPrevTask(event) {
+    //
+    let num = parseInt(event.target.attributes.getNamedItem("number").value);
+    console.log(num);
+    console.log(this.prevTasks[num]);
+    this.v.displayPrevTask(this.prevTasks[num]);
   }
 
   evaluate(answer) {
@@ -43,6 +52,8 @@ class Presenter {
       finalTask = true;
 
     this.tasksSolved++;
+    this.prevTasks.push({task: this.currentTask, answer: answer, type: this.currentTaskType});
+    console.log(this.prevTasks);
 
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);
@@ -61,9 +72,9 @@ class Presenter {
       this.v.closeTaskType(this.currentTaskType);
     }
 
-    console.log(this.totalTaskCount);
-    console.log(this.tasksSolved);
-    console.log(this.tasksCorrect);
+    //console.log(this.totalTaskCount);
+    //console.log(this.tasksSolved);
+    //console.log(this.tasksCorrect);
   }
 
   endQuiz() {
