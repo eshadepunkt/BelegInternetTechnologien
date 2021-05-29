@@ -6,6 +6,7 @@ class Presenter {
     this.tasksSolved = 0;
     this.tasksCorrect = 0;
     this.prevTasks = [];
+    this.selectedElement = null;
   }
 
   setModelAndView(m, v) {
@@ -24,6 +25,10 @@ class Presenter {
     return this.currentTaskType;
   }
 
+  getSelectedListElement() {
+    return this.selectedElement;
+  }
+
   loadTask() {
     let task = this.getNextTask();
     this.currentTask = task;
@@ -34,13 +39,15 @@ class Presenter {
     let a3 = task["a"][answers.splice(this.getRandomInt(1),1)];
     let a4 = task["a"][answers[0]];
 
+    this.selectedElement = this.tasksSolved;
+
     let title = "Frage " + (this.tasksSolved + 1) + ": " + task["title"];
     this.v.displayTask(title,this.tasksSolved, task["t"], a1, a2, a3, a4);
   }
 
   loadPrevTask(event) {
-    //
     let num = parseInt(event.target.attributes.getNamedItem("number").value);
+    this.selectedElement = num;
     console.log(num);
     console.log(this.prevTasks[num]);
     this.v.displayPrevTask(this.prevTasks[num]);
@@ -53,7 +60,7 @@ class Presenter {
 
     this.tasksSolved++;
     this.prevTasks.push({task: this.currentTask, answer: answer, type: this.currentTaskType});
-    console.log(this.prevTasks);
+    //console.log(this.prevTasks);
 
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);

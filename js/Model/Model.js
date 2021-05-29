@@ -20,12 +20,23 @@ class Model {
         {title: "HTTP", t:"Welche Authentifizierung bietet HTTP?", a:["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
         {title: "Protokolle", t:"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen?", a:["UDP","TCP","HTTP","Fast Retransmit"]},
         {title: "Protokolle", t:"Wie kann man zu einer gegebenen IP-Adresse den Domainnamen ermitteln?", a:["Reverse DNS", "DNS", "HTML", "CSS"]},
-
+        //{title: "", t:"", a:["","","",""]},
+        //{title: "", t:"", a:["","","",""]},
       ],
 
       "teil-allgemein": [
-        {title: "Historische Persönlichkeiten", t:"Karl der Große, Geburtsjahr", a:["747","828","650","1150"]},
-
+        {title: "Geschichte", t:"Wann wurde Karl der Große geboren?", a:["747","828","650","1150"]},
+        {title: "Geografie", t:"Wie heißt die Hauptstadt Deutschlands?", a:["Berlin","München","London","Bonn"]},
+        {title: "Medizin", t:"Wie viele Zähne hat ein erwachsener Mensch normalerweise?", a:["32","26","30","36"]},
+        {title: "Politik", t:"Wer wählt den Bundespräsidenten?", a:["Bundesversammlung","Bundesrat","Bundestag","Bundekanzler"]},
+        {title: "Politik", t:"Welches Land ist kein ständiges Mitglied im Sicherheitsrat der Vereinten Nationen?", a:["Deutschland","USA","Russland","China"]},
+        {title: "Geografie", t:"Wie heißt die Hauptstadt von Sachsen?", a:["Dresden","Leipzig","Berlin","Erfurt"]},
+        {title: "Geschichte", t:"Was soll Cäsar gesagt haben, als er den Rubikon überquerte?", a:["alea iacta est","et tu, brute","divivde et empera","veni, vidi, vici"]},
+        {title: "Kultur", t:"Wie viele Oscars gewann der Film \"Titanic\"?", a:["11","10","12","14"]},
+        {title: "Geografie", t:"Teneriffa, Gran Canaria und Fuerteventura gehören zu den...?", a:["Kanarischen Inseln","Balearen","Karibischen Inseln","Azoren"]},
+        {title: "Politik", t:"Wie beginnt Artikel 1 des deutschen Grundgesetzes?", a:["\"Die Würde des Menschen ist unantastbar.\"","\"Alle Menschen sind vor dem Gesetz gleich.\"","\"Jeder hat das Recht auf die freie Entfaltung seiner Persönlichkeit.\"","\"Jeder hat das Recht, seine Meinung in Wort, Schrift und Bild frei zu äußern.\""]},
+        {title: "Geschichte", t:"Wer gilt als Verfasser der amerikanischen Unabhhängigkeitserklärung?", a:["Thomas Jefferson","Benjamin Franklin","George Washington","John Adams"]},
+        {title: "Kultur", t:"Welche Adresse ist mit Sherlock Holmes verbunden?", a:["221b Baker Street","Downing Street 10","Abbey Road 42","Princess Street 7"]},
       ]
     };
   }

@@ -47,6 +47,8 @@ class View {
     document.getElementById("button3").setAttribute("answer", a3);
     document.getElementById("button4").setAttribute("answer", a4);
 
+    this.removeListItemSelection();
+
     if(document.getElementById("tasklist").lastElementChild != null) {
       if (document.getElementById("tasklist").lastElementChild.attributes.getNamedItem("solved").value === "false") {
         document.getElementById("tasklist").lastElementChild.remove();
@@ -57,6 +59,7 @@ class View {
     listitem.setAttribute("solved", "false");
     listitem.setAttribute("number", number.toString());
     listitem.setAttribute("style", "pointer-events:none");
+    listitem.classList.add("selectCategory");
     document.getElementById("tasklist").appendChild(listitem);
 
     document.getElementById("title").innerHTML = title;
@@ -83,11 +86,22 @@ class View {
       answerString = task["answer"];
     }
 
+    if(document.getElementById("tasklist").lastElementChild != null) {
+      if (document.getElementById("tasklist").lastElementChild.attributes.getNamedItem("solved").value === "false") {
+        document.getElementById("tasklist").lastElementChild.remove();
+      }
+    }
+
     document.getElementById("result").setAttribute("style","display:none");
     document.getElementById("buttons").setAttribute("style","display:none");
+    document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
+
+    this.removeListItemSelection();
+    let item = document.querySelectorAll("ul[number = \""+this.p.getSelectedListElement().toString()+"\"]");
+    item[0].classList.add("selectCategory");
 
     document.getElementById("title").innerHTML = task["task"]["title"];
-    document.getElementById("tasks").innerHTML = taskString + "  " + "Die gegebene Antwort war: " + answerString;
+    document.getElementById("tasks").innerHTML = taskString + " <br> " + "Die gegebene Antwort war: " + " <br> " + answerString;
 
   }
 
@@ -145,6 +159,13 @@ class View {
     document.getElementById(taskType).classList.remove("selectCategory");
     document.getElementById(taskType).classList.add("finishedCategory");
     document.getElementById(taskType).setAttribute("style","pointer-events: none");
+  }
+
+  removeListItemSelection() {
+    let items = document.querySelectorAll("nav#tasklist > *");
+    for(let i = 0; i < items.length; i++) {
+      items[i].classList.remove("selectCategory");
+    }
   }
 
 }
