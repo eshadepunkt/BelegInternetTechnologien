@@ -18,7 +18,7 @@
   flex-direction: column;
   flex-flow: row wrap;
   display: flex;
-  max-width: 64rem;
+  max-width: 72rem;
   margin: 0 auto;
 }
 
@@ -40,8 +40,8 @@ html {
   color: #FFFFFF;
   font-size: 1em;
   line-height: 1.4;
-  background: #24305e;
   font-family: "Segoe UI Semibold";
+  background: #374785;
 }
 header {
   text-align: center;
@@ -53,17 +53,17 @@ header {
   width: 100%;
   display: flex;
   margin-bottom: 1rem;
-  color: #a8d0e6;
+  color: #F8E9A1;
   background: #F76c6c;
-  font-size: 8px;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
+  justify-content: center;
 
 
 }
 
 .menu > nav > ul {
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bolder;
   float: left;
   margin: 5px;
@@ -71,7 +71,7 @@ header {
 }
 
 .menu > nav > ul:hover {
-  color: #F8E9A1;
+  color: #a8d0e6;
   text-shadow: none;
   font-weight: bold;
   cursor: pointer;
@@ -92,9 +92,7 @@ header {
   color: #24305e;
 
 }
-.finishedCategory > i {
-  color: #a8d0e6;
-}
+
 
 body {
 
@@ -122,20 +120,22 @@ p {
   color: #a8d0e6;
   padding: 1.5rem;
   flex: border-box;
-  background: #24305e;
   border-radius: 0.5rem;
 }
 
+#title {
+  display: none;
+}
 
 aside {
-  vertical-align: center;
-  align-items: center;
+  justify-content: center;
   float: left;
-  color: #ffffff;
+  color: #F8E9A1;
   background: #F76c6c;
-  display: flex;
+
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  padding: 1rem;
   margin-bottom: 1rem;
 }
 aside > * {
@@ -144,7 +144,9 @@ aside > * {
   display: flex;
 }
 aside > nav > ul {
-margin: 0;
+  margin: 0 ;
+  padding: 0.25rem;
+
 }
 aside > nav:hover {
 }
@@ -152,17 +154,21 @@ aside > nav:hover {
 aside > nav > ul:hover {
   font-weight: bold;
   cursor: pointer;
-  background: #F8E9A1;
+  background: #24305e;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 
 #mainArea{
   background: #F76c6c;
+  justify-content: center;
   font-size: 18px;
-  flex-flow: column wrap;
+  flex-flow: column;
   margin: 0rem 0rem 1rem 0rem;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+  flex-grow: 1;
 
 
 }
@@ -178,6 +184,7 @@ aside > nav > ul:hover {
   padding:  15px 32px;
   background: #24305e;
   border-radius: 0.5rem;
+  flex-flow: column wrap;
 
 }
 
@@ -186,6 +193,7 @@ aside > nav > ul:hover {
 
   display: flex;
   font-weight: bold;
+  flex-flow: wrap;
 
 }
 button {
@@ -217,11 +225,12 @@ button:hover {
 }
 
 footer {
-  background: #374785;
+  background: #24305e;
+
   padding: 1rem;
   align-items: center;
   justify-content: center;
-  color: #a8d0e6;
+  color: #F8E9A1;
   width: 100%;
   display: flex;
   border-radius: 0.5rem;
@@ -395,44 +404,57 @@ textarea {
 
 @media only screen and (max-width: 550px) {
   /* Style adjustments for viewports that meet the condition */
-
+  header > h1 {
+    font-size: medium;
+    margin: 0.5rem;
+  }
+  header.title {
+    padding: 0;
+    display: none;
+  }
   aside {
     background: #374785;
     width: 100%;
     justify-content: center;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0;
+    margin: 0;
   }
   aside > * {
-    flex-flow: row;
+    flex-flow: row wrap;
   }
   aside > nav > ul {
     padding: 1rem;
+    font-size: x-large;
 
   }
   aside > nav > ul:hover {
     color: #24305e;
-
-
   }
-
+  header {
+  padding: 0;
+  }
   #mainArea {
    flex-flow: column;
     display: flex;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+
   }
   section.title {
     flex-flow: column;
     padding: 1rem;
+    display: none;
+
   }
 
   #tasks {
     float: left;
-    flex-flow: row;
+    flex-flow: column;
 
   }
-
+#taskSelection {
+  justify-content: center;
+}
   .menu > nav {
     font-size: large;
     font-weight: bolder;
