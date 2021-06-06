@@ -33,6 +33,7 @@ section {
   horiz-align: center;
   justify-content: center;
   display: inline-flex;
+  flex-flow: wrap;
 }
 
 
@@ -106,6 +107,9 @@ article {
   display: flex;
 
 }
+article > * {
+  display: flex;
+}
 article > section {
   margin: 1rem;
 }
@@ -128,15 +132,16 @@ p {
 }
 
 aside {
-  justify-content: center;
+  justify-content: space-between;
   float: left;
   color: #F8E9A1;
   background: #F76c6c;
-
+  display: inline-flex;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 1rem;
+
 }
 aside > * {
 
@@ -169,6 +174,7 @@ aside > nav > ul:hover {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   flex-grow: 1;
+  max-width: 80%;
 
 
 }
@@ -184,7 +190,7 @@ aside > nav > ul:hover {
   padding:  15px 32px;
   background: #24305e;
   border-radius: 0.5rem;
-  flex-flow: column wrap;
+
 
 }
 
@@ -193,10 +199,12 @@ aside > nav > ul:hover {
 
   display: flex;
   font-weight: bold;
-  flex-flow: wrap;
+
+  flex-flow: column wrap;
 
 }
 button {
+
   padding: 8px 16px;
   border-radius: 4px;
   background: #F76c6c;
@@ -204,6 +212,7 @@ button {
   color: #F8E9A1;
   margin: 0.2em;
   box-sizing: border-box;
+  max-width: 25rem;
 
 }
 
@@ -413,11 +422,11 @@ textarea {
     display: none;
   }
   aside {
-    background: #374785;
+    background: #f8676b;
     width: 100%;
     justify-content: center;
     border-radius: 0.5rem 0.5rem 0 0;
-    padding: 0;
+    padding: 1rem;
     margin: 0;
   }
   aside > * {
@@ -438,6 +447,7 @@ textarea {
    flex-flow: column;
     display: flex;
     border-radius: 0 0 0.5rem 0.5rem;
+    max-width: 100%;
 
   }
   section.title {
@@ -453,6 +463,7 @@ textarea {
 
   }
 #taskSelection {
+  margin: 1rem 0;
   justify-content: center;
 }
   .menu > nav {
@@ -460,7 +471,7 @@ textarea {
     font-weight: bolder;
     display: flex;
     flex-flow: Column;
-    margin: 1px;
+    margin: 1rem;
     float: left;
   }
   .menu > nav > ul {
