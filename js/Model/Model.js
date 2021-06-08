@@ -20,13 +20,13 @@ class Model {
         {title: "HTTP", t:"Welche Authentifizierung bietet HTTP?", a:["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
         {title: "Protokolle", t:"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen?", a:["UDP","TCP","HTTP","Fast Retransmit"]},
         {title: "DNS", t:"Wie kann man zu einer gegebenen IP-Adresse den Domainnamen ermitteln?", a:["Reverse DNS", "DNS", "HTML", "CSS"]},
-        {title: "DNS", t:"Was ist DynDNS?", a:["Eine Alias für eine wechselnde IP-Adresse", "Ein Proxyserver", "Eine Unterdomäne", "Ein Programm zum Erstellen von Netzwerkplänen"]},
-        {title: "DNS", t:"Welche Portnummern werden well-known-Ports genannt?", a:["Portrange 0-49151", "Portrange 0-1024", "80-8080", "0-32768"]},
+        {title: "DNS", t:"Was ist DynDNS?", a:["Ein Alias für eine wechselnde IP-Adresse", "Ein Proxyserver", "Eine Unterdomäne", "Ein Programm zum Erstellen von Netzwerkplänen"]},
+        {title: "DNS", t:"Welche Portnummern werden \"well-known ports\" genannt?", a:["0-49151", "0-1024", "80-8080", "0-32768"]},
         {title: "Crypto", t:"Welche Technologie nutzt man um Kryptowährung zu tauschen?", a:["Blockchain", "Digital Wallet", "Mining", "Token"]},
         {title: "E-Mail", t:"Welcher Standard-Port ist für SMTP laut IANA vorgesehen?", a:["25", "21", "80", "53"]},
         {title: "E-Mail", t:"Was ist das Ziel des Autocrypt-Standards?", a:["Opportunistische Verschüsselung", "Prinzipielle Vermeidung", "Selbstständige Erweiterung", "Stille Teilhabe"]},
         {title: "Sockets", t:"Wie erfolgt bei den Root-DNS-Servern die Lastverteilung?", a:["Anycast", "Unicast", "Broadcast", "Multicast"]},
-        {title: "Javascript", t:"Was ist bubbling?", a:["Ereigniseskalation", "Ein Entwurfsmuster", "Eine besondere Schleife", "Ein besonderer Methodenaufruf"]},
+        {title: "Javascript", t:"Was ist \"Bubbling\"?", a:["Eine Art der Ereignisausbreitung", "Ein Entwurfsmuster", "Eine besondere Schleife", "Ein besonderer Methodenaufruf"]},
 
       ],
 
