@@ -134,6 +134,7 @@ class View {
     document.getElementById("teil-mathe").setAttribute("style","pointer-events: none");
     document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: none");
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
+    document.getElementById("server").setAttribute("style","pointer-events: none");
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
 
     document.getElementById("title").setAttribute("style","display:none");
@@ -154,12 +155,14 @@ class View {
     this.p.changeTaskType(event.target.id);
   }
 
+
   closeTaskType(taskType) {
     document.getElementById(taskType).innerHTML += " <i class=\"fas fa-check-circle\"></i>";
     document.getElementById(taskType).classList.remove("selectCategory");
     document.getElementById(taskType).classList.add("finishedCategory");
     document.getElementById(taskType).setAttribute("style","pointer-events: none");
   }
+
 
   removeListItemSelection() {
     let items = document.querySelectorAll("nav#tasklist > *");
