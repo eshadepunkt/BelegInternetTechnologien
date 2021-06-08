@@ -118,19 +118,6 @@ p {
 
 }
 
-.title {
-  font-size: larger;
-  font-weight: bolder;
-  color: #a8d0e6;
-  padding: 1.5rem;
-  flex: border-box;
-  border-radius: 0.5rem;
-}
-
-#title {
-  display: none;
-}
-
 aside {
   justify-content: space-between;
   float: left;
@@ -170,7 +157,7 @@ aside > nav > ul:hover {
   justify-content: center;
   font-size: 18px;
   flex-flow: column;
-  margin: 0rem 0rem 1rem 0rem;
+  margin: 0 0 1rem 0;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   flex-grow: 1;

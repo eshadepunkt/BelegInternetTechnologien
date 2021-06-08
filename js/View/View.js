@@ -62,7 +62,6 @@ class View {
     listitem.classList.add("selectCategory");
     document.getElementById("tasklist").appendChild(listitem);
 
-    document.getElementById("title").innerHTML = title;
     document.getElementById("tasks").innerHTML = taskString;
     document.getElementById("button1").innerHTML = a1String;
     document.getElementById("button2").innerHTML = a2String;
@@ -100,7 +99,6 @@ class View {
     let item = document.querySelectorAll("ul[number = \""+this.p.getSelectedListElement().toString()+"\"]");
     item[0].classList.add("selectCategory");
 
-    document.getElementById("title").innerHTML = task["task"]["title"];
     document.getElementById("tasks").innerHTML = taskString + " <br> " + "Die gegebene Antwort war: " + " <br> " + answerString;
 
   }
@@ -136,8 +134,6 @@ class View {
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
     document.getElementById("server").setAttribute("style","pointer-events: none");
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
-
-    document.getElementById("title").setAttribute("style","display:none");
 
     document.getElementById("result").setAttribute("style","display:none");
     document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch! Du hast " + correct + " von " + solved + " Aufgaben richtig beantwortet! " +
