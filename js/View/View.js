@@ -146,13 +146,13 @@ class View {
   }
 
 
-  taskTypeSelection(event) {
+  async taskTypeSelection(event) {
     document.getElementById("next").setAttribute("style", "display:inline");
 
     console.log("View -> Task Selection: " + event.target.id);
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
     event.target.classList.add("selectCategory");
-    this.p.changeTaskType(event.target.id);
+    await this.p.changeTaskType(event.target.id);
   }
 
 

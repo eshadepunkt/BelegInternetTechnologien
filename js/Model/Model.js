@@ -57,9 +57,20 @@ class Model {
   }
 
   //returns the task
-  getTask(taskType, number) {
+  async getTask(taskType, number) {
     if(taskType === "server") {
-      //TODO make AJAX request to get task
+      console.log(number);
+      let headers = new Headers();
+      headers.append("Authorization", "Basic " + btoa("s80476@htw-dresden.de:IT1BelegPWD"));
+      let response = await fetch("https://irene.informatik.htw-dresden.de:8888/api/quizzes/" + this.serverTaskIDs[number], {
+        method: "GET",
+        headers: headers
+      })
+      console.log(response);
+      let task = await response.json();
+      console.log(task);
+      task = {title: task["title"], t: task["text"], a: task["options"]};
+      return task;
     }
     else {
       let retTask = this.tasks[taskType][number];

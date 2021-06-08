@@ -5,5 +5,5 @@ document.addEventListener("DOMContentLoaded", function() {
   p = new Presenter();
   v = new View(p);
   p.setModelAndView(m,v);
-  p.start();
+  p.start().then();
 });

@@ -14,11 +14,11 @@ class Presenter {
     this.v = v;
   }
 
-  start() {
+  async start() {
     this.currentTaskType = "teil-mathe";
     this.totalTaskCount = this.m.getTotalTaskCount();
     this.v.setup();
-    this.loadTask();
+    await this.loadTask();
   }
 
   getTaskType() {
@@ -29,8 +29,8 @@ class Presenter {
     return this.selectedElement;
   }
 
-  loadTask() {
-    let task = this.getNextTask();
+  async loadTask() {
+    let task = await this.getNextTask();
     this.currentTask = task;
 
     let answers = [0,1,2,3];
@@ -85,19 +85,19 @@ class Presenter {
     this.v.displayEndScreen(this.totalTaskCount, this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
   }
 
-  changeTaskType (taskType) {
+  async changeTaskType (taskType) {
     this.currentTaskType = taskType;
-    this.loadTask();
+    await this.loadTask();
   }
 
 
   //returns a random task from the current type
-  getNextTask() {
+  async getNextTask() {
     console.log("Presenter -> nächste Aufgabe: " + this.currentTaskType);
 
     let taskCount = this.m.getTaskCount(this.currentTaskType);
     let randTask = this.getRandomInt(taskCount - 1);
-    return this.m.getTask(this.currentTaskType, randTask);
+    return await this.m.getTask(this.currentTaskType, randTask);
   }
 
   getRandomInt(max) {
