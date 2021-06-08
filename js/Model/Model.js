@@ -4,8 +4,7 @@ class Model {
     this.loadTasks();
     this.currentTask = null;
     this.currentTaskType = null;
-    this.serverTaskCount = 0;
-    this.serverTaskIDs = ["3284"];
+    this.serverTaskIDs = ["3284","3289","3290"];
   }
 
   loadTasks() {
@@ -48,7 +47,7 @@ class Model {
 
   getTaskCount(taskType) {
     if(taskType === "server") {
-      return this.serverTaskCount;
+      return this.serverTaskIDs.length;
     }
     else {
       return this.tasks[taskType].length;
@@ -66,9 +65,8 @@ class Model {
         method: "GET",
         headers: headers
       })
-      console.log(response);
+
       let task = await response.json();
-      console.log(task);
       task = {title: task["title"], t: task["text"], a: task["options"]};
       return task;
     }
