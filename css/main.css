@@ -227,9 +227,11 @@ footer {
   align-items: center;
   justify-content: center;
   color: #F8E9A1;
-  width: 100%;
+  width: 90%;
   display: flex;
   border-radius: 0.5rem;
+
+  font-size: small;
 }
 
 
