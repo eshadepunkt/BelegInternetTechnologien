@@ -104,6 +104,15 @@
   <script src="js/Model/Model.js"></script>
   <script src="js/View/View.js"></script>
   <script src="js/Presenter/Presenter.js"></script>
+
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log(reg))
+        .catch(err => console.log(err));
+    }
+  </script>
 </body>
 
 </html>
