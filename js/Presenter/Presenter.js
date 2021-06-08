@@ -79,9 +79,6 @@ class Presenter {
       this.v.closeTaskType(this.currentTaskType);
     }
 
-    //console.log(this.totalTaskCount);
-    //console.log(this.tasksSolved);
-    //console.log(this.tasksCorrect);
   }
 
   endQuiz() {
@@ -106,9 +103,5 @@ class Presenter {
   getRandomInt(max) {
     return Math.floor(Math.random() * (max + 1));
   }
-
-  //TODO keeping track of progress and statistics
-
-  //TODO making AJAX-Request to Server and get a task
 
 }

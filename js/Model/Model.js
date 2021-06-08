@@ -5,6 +5,7 @@ class Model {
     this.currentTask = null;
     this.currentTaskType = null;
     this.serverTaskCount = 0;
+    this.serverTaskIDs = ["3284"];
   }
 
   loadTasks() {
@@ -62,7 +63,7 @@ class Model {
 
   }
 
-  //returns the task and removes it from the task array
+  //returns the task
   getTask(taskType, number) {
     if(taskType === "server") {
       //TODO make AJAX request to get task
