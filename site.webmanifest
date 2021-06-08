@@ -1,12 +1,14 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "Webquiz",
+  "name": "Webquiz Beleg IT 1",
+  "lang": "de-DE",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
-  "start_url": "/?utm_source=homescreen",
+  "start_url": "/BelegInternetTechnologien/index.html",
+  "display": "standalone",
   "background_color": "#fafafa",
   "theme_color": "#fafafa"
 }
