@@ -14,11 +14,10 @@ class Presenter {
     this.v = v;
   }
 
-  async start() {
+  start() {
     this.currentTaskType = "teil-mathe";
-    this.totalTaskCount = this.m.getTotalTaskCount();
     this.v.setup();
-    await this.loadTask();
+    this.loadTask();
   }
 
   getTaskType() {
@@ -48,24 +47,21 @@ class Presenter {
   loadPrevTask(event) {
     let num = parseInt(event.target.attributes.getNamedItem("number").value);
     this.selectedElement = num;
-    console.log(num);
-    console.log(this.prevTasks[num]);
     this.v.displayPrevTask(this.prevTasks[num]);
   }
 
-  evaluate(answer) {
+  async evaluate(answer) {
     let finalTask = false;
     if(this.m.getTaskCount(this.currentTaskType) === 1)
       finalTask = true;
 
     this.tasksSolved++;
     this.prevTasks.push({task: this.currentTask, answer: answer, type: this.currentTaskType});
-    //console.log(this.prevTasks);
 
     console.log("Presenter -> Antwort: " + answer);
     let answerIdx = this.currentTask["a"].indexOf(answer);
 
-    if(this.m.checkAnswer(this.currentTaskType, answerIdx)) {
+    if(await this.m.checkAnswer(this.currentTaskType, answerIdx)) {
       console.log("correct");
       this.tasksCorrect++;
       this.v.displayResultScreen("Richtig! ",true, finalTask);
@@ -82,12 +78,12 @@ class Presenter {
   }
 
   endQuiz() {
-    this.v.displayEndScreen(this.totalTaskCount, this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
+    this.v.displayEndScreen(this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
   }
 
-  async changeTaskType (taskType) {
+  changeTaskType (taskType) {
     this.currentTaskType = taskType;
-    await this.loadTask();
+    this.loadTask();
   }
 
 

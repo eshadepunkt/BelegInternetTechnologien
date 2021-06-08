@@ -4,7 +4,7 @@ class Model {
     this.loadTasks();
     this.currentTask = null;
     this.currentTaskType = null;
-    this.serverTaskIDs = ["3284","3289","3290"];
+    this.currServerTaskID = null;
   }
 
   loadTasks() {
@@ -28,7 +28,6 @@ class Model {
         {title: "Sockets", t:"Wie erfolgt bei den Root-DNS-Servern die Lastverteilung?", a:["Anycast", "Unicast", "Broadcast", "Multicast"]},
         {title: "Javascript", t:"Was ist bubbling?", a:["Ereigniseskalation", "Ein Entwurfsmuster", "Eine besondere Schleife", "Ein besonderer Methodenaufruf"]},
 
-        //{title: "", t:"", a:["","","",""]},
       ],
 
       "teil-allgemein": [
@@ -46,10 +45,8 @@ class Model {
         {title: "Kultur", t:"Welche Adresse ist mit Sherlock Holmes verbunden?", a:["221b Baker Street","Downing Street 10","Abbey Road 42","Princess Street 7"]},
       ]
     };
-  }
 
-  getTotalTaskCount() {
-    return this.tasks["teil-mathe"].length + this.tasks["teil-internettechnologien"].length + this.tasks["teil-allgemein"].length;
+    this.serverTaskIDs = ["3284","3305","3304","3292","3293","3303","3296","3297","3302","3299","3300","3301"];
   }
 
   getTaskCount(taskType) {
@@ -65,44 +62,61 @@ class Model {
   //returns the task
   async getTask(taskType, number) {
     if(taskType === "server") {
-      console.log(number);
+      this.currServerTaskID = this.serverTaskIDs[number];
       let headers = new Headers();
       headers.append("Authorization", "Basic " + btoa("s80476@htw-dresden.de:IT1BelegPWD"));
-      let response = await fetch("https://irene.informatik.htw-dresden.de:8888/api/quizzes/" + this.serverTaskIDs[number], {
+      let response = await fetch("https://irene.informatik.htw-dresden.de:8888/api/quizzes/" + this.currServerTaskID, {
         method: "GET",
         headers: headers
       })
 
       let task = await response.json();
       task = {title: task["title"], t: task["text"], a: task["options"]};
+      this.currentTask = task;
+      this.currentTaskType = taskType;
+
       return task;
     }
     else {
-      let retTask = this.tasks[taskType][number];
-      this.currentTask = retTask;
+      let task = this.tasks[taskType][number];
+      this.currentTask = task;
       this.currentTaskType = taskType;
-      return retTask;
+      return task;
     }
   }
 
-  checkAnswer(taskType, idx) {
+  async checkAnswer(taskType, idx) {
     if(taskType === "server") {
-      //TODO Make AJAX request to check answer
+      this.removeCurrentTask();
+
+      let answerArray = [idx];
+      let headers = new Headers();
+      headers.append("Authorization", "Basic " + btoa("s80476@htw-dresden.de:IT1BelegPWD"));
+      headers.append("Content-Type", "application/json");
+      let response = await fetch("https://irene.informatik.htw-dresden.de:8888/api/quizzes/" + this.currServerTaskID + "/solve", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(answerArray)
+      })
+
+      let result = await response.json();
+      return result["success"];
     }
     else {
       this.removeCurrentTask();
-      if(idx === 0) {
-        return true;
-      }
-      else {
-        return false;
-      }
+      return idx === 0;
     }
   }
 
   removeCurrentTask() {
-    let idx = this.tasks[this.currentTaskType].indexOf(this.currentTask);
-    this.tasks[this.currentTaskType].splice(idx,1);
+    if(this.currentTaskType === "server") {
+      let idx = this.serverTaskIDs.indexOf(this.currServerTaskID);
+      this.serverTaskIDs.splice(idx,1);
+    }
+    else {
+      let idx = this.tasks[this.currentTaskType].indexOf(this.currentTask);
+      this.tasks[this.currentTaskType].splice(idx, 1);
+    }
   }
 
 }

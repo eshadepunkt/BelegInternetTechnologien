@@ -130,7 +130,7 @@ class View {
 
   }
 
-  displayEndScreen(total, solved, correct, percent) {
+  displayEndScreen(solved, correct, percent) {
     document.getElementById("teil-mathe").setAttribute("style","pointer-events: none");
     document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: none");
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: none");
@@ -146,13 +146,13 @@ class View {
   }
 
 
-  async taskTypeSelection(event) {
+  taskTypeSelection(event) {
     document.getElementById("next").setAttribute("style", "display:inline");
 
     console.log("View -> Task Selection: " + event.target.id);
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
     event.target.classList.add("selectCategory");
-    await this.p.changeTaskType(event.target.id);
+    this.p.changeTaskType(event.target.id);
   }
 
 
