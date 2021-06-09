@@ -220,6 +220,10 @@ button:hover {
   display: flex;
 }
 
+#endQuiz {
+  display: flex;
+}
+
 footer {
   background: #24305e;
 

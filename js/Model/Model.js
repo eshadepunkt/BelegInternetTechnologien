@@ -10,9 +10,16 @@ class Model {
   loadTasks() {
     this.tasks = {
       "teil-mathe": [
-        {title: "Potenzgesetze", t:"x^2+x^2\\enspace=\\enspace?", a:["2x^2","x^4","x^8","2x^4"]},
-        {title: "Potenzgesetze", t:"x^2*x^2\\enspace=\\enspace?", a:["x^4","x^2","2x^2","4x"]},
-        {title: "Ableitung", t:"\\frac{d}{dx} x^2\\enspace=\\enspace?", a:["2x", "2", "4", "x^3"]},
+        {title: "Potenzgesetze", t:"x^2+x^2\\enspace", a:["2x^2","x^4","x^8","2x^4"]},
+        {title: "Potenzgesetze", t:"x^2*x^2\\enspace", a:["x^4","x^2","2x^2","4x"]},
+        {title: "Potenzgesetze", t:"\\frac{x^3}{x^2}\\enspace", a:["x","x^2","x^3","1"]},
+        {title: "Analysis", t:"\\frac{d}{dx} x^2\\enspace", a:["2x", "2", "4", "x^3"]},
+        {title: "Analysis", t:"\\frac{d}{dx} \\sin(x)\\enspace", a:["\\cos(x)", "-\\sin(x)", "\\sin(x)", "\\pi"]},
+        {title: "Wurzelrechnung", t:"\\sqrt{169} \\enspace", a:["13", "19", "9", "14"]},
+        {title: "Wurzelrechnung", t:"\\sqrt{484} \\enspace", a:["22", "21", "20", "48"]},
+        {title: "Potenzrechnung", t:"{16}^2 \\enspace", a:["22", "21", "20", "48"]},
+        {title: "Analysis", t:"\\lim\\limits_{x\\rightarrow\\infty} x^2 \\enspace", a:["\\infty", "0", "2", "-\\infty"]},
+        {title: "Analysis", t:"\\lim\\limits_{x\\rightarrow\\infty} \\frac{1}{x} \\enspace", a:["0", "\\infty", "1", "-\\infty"]},
 
       ],
 
@@ -27,7 +34,6 @@ class Model {
         {title: "E-Mail", t:"Was ist das Ziel des Autocrypt-Standards?", a:["Opportunistische Verschüsselung", "Prinzipielle Vermeidung", "Selbstständige Erweiterung", "Stille Teilhabe"]},
         {title: "Sockets", t:"Wie erfolgt bei den Root-DNS-Servern die Lastverteilung?", a:["Anycast", "Unicast", "Broadcast", "Multicast"]},
         {title: "Javascript", t:"Was ist \"Bubbling\"?", a:["Eine Art der Ereignisausbreitung", "Ein Entwurfsmuster", "Eine besondere Schleife", "Ein besonderer Methodenaufruf"]},
-
       ],
 
       "teil-allgemein": [

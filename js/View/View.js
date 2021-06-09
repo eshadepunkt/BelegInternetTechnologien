@@ -9,6 +9,7 @@ class View {
     document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
     document.getElementById("next").addEventListener("click", this.p.loadTask.bind(this.p), false);
     document.getElementById("end").addEventListener("click", this.p.endQuiz.bind(this.p), false);
+    document.getElementById("restart").addEventListener("click", this.p.restartQuiz.bind(this.p), false);
 
     let taskSel = document.querySelectorAll("div#taskSelection > nav > *");
     for (let i = 0; i < taskSel.length; i++) {
@@ -19,6 +20,14 @@ class View {
 
   setup() {
     document.getElementById("result").setAttribute("style","display:none");
+    document.getElementById("restart").setAttribute("style", "display:none");
+    document.getElementById("tasklist").innerHTML = "";
+
+    document.getElementById("teil-mathe").setAttribute("style","pointer-events: auto");
+    document.getElementById("teil-internettechnologien").setAttribute("style","pointer-events: auto");
+    document.getElementById("teil-allgemein").setAttribute("style","pointer-events: auto");
+    document.getElementById("server").setAttribute("style","pointer-events: auto");
+
     document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
   }
 
@@ -107,6 +116,9 @@ class View {
     console.log("View -> Evaluate: " + event.type + " " + event.target.nodeName);
     if (event.target.nodeName.toLowerCase() === "button") {
       this.p.evaluate(event.target.attributes.getNamedItem("answer").value);
+      event.target.disabled = true;
+
+      setTimeout(function() {event.target.disabled = false; console.log("enabled");}, 500);
     }
   }
 
@@ -139,6 +151,7 @@ class View {
     document.getElementById("tasks").innerHTML = "Quiz beendet! Herzlichen Glückwunsch! Du hast " + correct + " von " + solved + " Aufgaben richtig beantwortet! " +
     "Das sind " + percent + " %";
 
+    document.getElementById("restart").setAttribute("style", "display:inline");
   }
 
 

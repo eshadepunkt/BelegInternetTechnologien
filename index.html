@@ -85,6 +85,9 @@
           <button id="next" content="Nächste Frage >">Nächste Frage ></button>
           <button id="end" content="Quiz beenden">Quiz beenden</button>
         </div>
+        <div id="endQuiz">
+          <button id="restart" content="Quiz neustarten">Quiz neustarten</button>
+        </div>
       </section>
     </article>
     <footer>
@@ -92,8 +95,6 @@
     </footer>
 
   </main>
-
-
 
 
 
@@ -105,14 +106,6 @@
   <script src="js/View/View.js"></script>
   <script src="js/Presenter/Presenter.js"></script>
 
-  <script>
-    // Register Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log(reg))
-        .catch(err => console.log(err));
-    }
-  </script>
 </body>
 
 </html>

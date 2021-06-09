@@ -81,6 +81,17 @@ class Presenter {
     this.v.displayEndScreen(this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
   }
 
+  restartQuiz() {
+    this.m.loadTasks();
+    this.currentTaskType = null;
+    this.currentTask = null;
+    this.tasksSolved = 0;
+    this.tasksCorrect = 0;
+    this.prevTasks = [];
+    this.selectedElement = null;
+    p.start();
+  }
+
   changeTaskType (taskType) {
     this.currentTaskType = taskType;
     this.loadTask();
