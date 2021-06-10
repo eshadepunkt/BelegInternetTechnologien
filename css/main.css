@@ -38,7 +38,7 @@ section {
 
 
 html {
-  color: #FFFFFF;
+  color: #a8d0e6;
   font-size: 1em;
   line-height: 1.4;
   font-family: "Segoe UI Semibold";
@@ -49,6 +49,10 @@ header {
   text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
   flex: content-box;
 
+}
+a {
+  color: #F8E9A1;
+  margin: .2em;
 }
 .menu {
   width: 100%;
@@ -128,7 +132,6 @@ aside {
   border-bottom-left-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 1rem;
-
 }
 aside > * {
 
@@ -504,6 +507,7 @@ textarea {
 
   a,
   a:visited {
+
     text-decoration: underline;
   }
 
