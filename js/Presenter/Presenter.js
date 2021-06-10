@@ -1,4 +1,5 @@
 "use strict";
+
 class Presenter {
   constructor() {
     this.currentTaskType = null;
@@ -34,16 +35,16 @@ class Presenter {
     this.currentTask = task;
 
     //shuffle the answers to show them in random order
-    let answers = [0,1,2,3];
-    let a1 = task["a"][answers.splice(this.getRandomInt(3),1)];
-    let a2 = task["a"][answers.splice(this.getRandomInt(2),1)];
-    let a3 = task["a"][answers.splice(this.getRandomInt(1),1)];
+    let answers = [0, 1, 2, 3];
+    let a1 = task["a"][answers.splice(this.getRandomInt(3), 1)];
+    let a2 = task["a"][answers.splice(this.getRandomInt(2), 1)];
+    let a3 = task["a"][answers.splice(this.getRandomInt(1), 1)];
     let a4 = task["a"][answers[0]];
 
     this.selectedElement = this.tasksSolved;
 
     let title = "Frage " + (this.tasksSolved + 1) + ": " + task["title"];
-    this.v.displayTask(title,this.tasksSolved, task["t"], a1, a2, a3, a4);
+    this.v.displayTask(title, this.tasksSolved, task["t"], a1, a2, a3, a4);
   }
 
   loadPrevTask(event) {
@@ -55,7 +56,7 @@ class Presenter {
   async evaluate(answer) {
     //check, whether the task solved was the last task in that category
     let finalTask = false;
-    if(this.m.getTaskCount(this.currentTaskType) === 1)
+    if (this.m.getTaskCount(this.currentTaskType) === 1)
       finalTask = true;
 
     this.tasksSolved++;
@@ -63,23 +64,22 @@ class Presenter {
 
     let answerIdx = this.currentTask["a"].indexOf(answer);  //this is the index at which the given answer is in the original task
 
-    if(await this.m.checkAnswer(this.currentTaskType, answerIdx)) {
+    if (await this.m.checkAnswer(this.currentTaskType, answerIdx)) {
       this.tasksCorrect++;
-      this.v.displayResultScreen("Richtig! ",true, finalTask);
-    }
-    else {
+      this.v.displayResultScreen("Richtig! ", true, finalTask);
+    } else {
       this.v.displayResultScreen("Falsch! ", false, finalTask);
     }
 
     //if there are no more tasks in this category, we disable this category
-    if(finalTask) {
+    if (finalTask) {
       this.v.closeTaskType(this.currentTaskType);
     }
 
   }
 
   endQuiz() {
-    this.v.displayEndScreen(this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect/this.tasksSolved*100*100)/100);
+    this.v.displayEndScreen(this.tasksSolved, this.tasksCorrect, Math.round(this.tasksCorrect / this.tasksSolved * 100 * 100) / 100);
   }
 
   restartQuiz() {
@@ -94,8 +94,7 @@ class Presenter {
   }
 
 
-
-  changeTaskType (taskType) {
+  changeTaskType(taskType) {
     this.currentTaskType = taskType;
     this.loadTask();
   }
