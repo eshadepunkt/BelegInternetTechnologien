@@ -34,3 +34,12 @@ iOS 14.4.2
 * responsive design
 * design for mobile
 * can be installed as PWA on mobile (without service worker!)
+
+<h2> Further improvements </h2>
+
+* make the app offline playble
+* add more categories
+* expand the question pool
+* make the right anwser visible when answered false
+* implement a router
+
