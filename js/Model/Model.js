@@ -114,6 +114,7 @@ class Model {
     }
   }
 
+  //remove the answered task from the tasks list, so that it will not get shown again
   removeCurrentTask() {
     if(this.currentTaskType === "server") {
       let idx = this.serverTaskIDs.indexOf(this.currServerTaskID);

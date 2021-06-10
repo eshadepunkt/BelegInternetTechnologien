@@ -5,6 +5,7 @@ class View {
     this.setHandler();
   }
 
+  //sets event handlers for all the buttons and the categories
   setHandler() {
     document.getElementById("buttons").addEventListener("click", this.evaluate.bind(this), false);
     document.getElementById("next").addEventListener("click", this.p.loadTask.bind(this.p), false);
@@ -63,11 +64,14 @@ class View {
 
     this.removeListItemSelection();
 
+    //if the last question was not answered (e.g. because the category was switched), remove the task from the tasklist
     if(document.getElementById("tasklist").lastElementChild != null) {
       if (document.getElementById("tasklist").lastElementChild.attributes.getNamedItem("solved").value === "false") {
         document.getElementById("tasklist").lastElementChild.remove();
       }
     }
+
+    //append the new task to the tasklist
     let listitem = document.createElement("UL");
     listitem.innerHTML = title;
     listitem.setAttribute("solved", "false");
@@ -82,6 +86,7 @@ class View {
     document.getElementById("button3").innerHTML = a3String;
     document.getElementById("button4").innerHTML = a4String;
 
+    //remove pointer events from button content (not the buttons itself) so that e.g. KaTeX spans are not clickable
     let elems = document.querySelectorAll("div#buttons > button > *");
     for(let i = 0; i < elems.length; i++) {
       elems[i].setAttribute("style", "pointer-events: none");
@@ -92,7 +97,7 @@ class View {
     let taskString, answerString;
     if(task["type"] === "teil-mathe") {
       taskString = katex.renderToString(task["task"]["t"]);
-      answerString = katex.renderToString(task["answer"]);
+      answerString = katex.renderToString("\\enspace" + task["answer"]);
     }
     else {
       taskString = task["task"]["t"];
@@ -110,20 +115,19 @@ class View {
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
 
     this.removeListItemSelection();
-    let item = document.querySelectorAll("ul[number = \""+this.p.getSelectedListElement().toString()+"\"]");
+    let item = document.querySelectorAll("ul[number = \""+this.p.getSelectedListElement().toString()+"\"]"); //get the specific tasklist element of the task
     item[0].classList.add("selectCategory");
 
     document.getElementById("tasks").innerHTML = taskString + " <br> " + "Die gegebene Antwort war: " + " <br> " + answerString;
-
   }
 
   evaluate(event) {
-    console.log("View -> Evaluate: " + event.type + " " + event.target.nodeName);
     if (event.target.nodeName.toLowerCase() === "button") {
       this.p.evaluate(event.target.attributes.getNamedItem("answer").value);
-      event.target.disabled = true;
 
-      setTimeout(function() {event.target.disabled = false; console.log("enabled");}, 500);
+      //disable button for 0.5 seconds so you can't click it again while the answer gets evaluated (asynchronously)
+      event.target.disabled = true;
+      setTimeout(function() {event.target.disabled = false;}, 500);
     }
   }
 
@@ -159,17 +163,16 @@ class View {
     document.getElementById("restart").setAttribute("style", "display:inline");
   }
 
-
+  //select a different category
   taskTypeSelection(event) {
     document.getElementById("next").setAttribute("style", "display:inline");
 
-    console.log("View -> Task Selection: " + event.target.id);
     document.getElementById(this.p.getTaskType()).classList.remove("selectCategory");
     event.target.classList.add("selectCategory");
     this.p.changeTaskType(event.target.id);
   }
 
-
+  //disable a category
   closeTaskType(taskType) {
     document.getElementById(taskType).innerHTML += " <i class=\"fas fa-check-circle\"></i>";
     document.getElementById(taskType).classList.remove("selectCategory");
@@ -177,12 +180,10 @@ class View {
     document.getElementById(taskType).setAttribute("style","pointer-events: none");
   }
 
-
   removeListItemSelection() {
     let items = document.querySelectorAll("nav#tasklist > *");
     for(let i = 0; i < items.length; i++) {
       items[i].classList.remove("selectCategory");
     }
   }
-
 }

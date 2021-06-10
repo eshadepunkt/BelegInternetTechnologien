@@ -9,17 +9,6 @@ class Presenter {
     this.selectedElement = null;
   }
 
-  setModelAndView(m, v) {
-    this.m = m;
-    this.v = v;
-  }
-
-  start() {
-    this.currentTaskType = "teil-mathe";
-    this.v.setup();
-    this.loadTask();
-  }
-
   getTaskType() {
     return this.currentTaskType;
   }
@@ -28,10 +17,23 @@ class Presenter {
     return this.selectedElement;
   }
 
+  setModelAndView(m, v) {
+    this.m = m;
+    this.v = v;
+  }
+
+  //sets up the quiz and loads the first task
+  start() {
+    this.currentTaskType = "teil-mathe";
+    this.v.setup();
+    this.loadTask();
+  }
+
   async loadTask() {
     let task = await this.getNextTask();
     this.currentTask = task;
 
+    //shuffle the answers to show them in random order
     let answers = [0,1,2,3];
     let a1 = task["a"][answers.splice(this.getRandomInt(3),1)];
     let a2 = task["a"][answers.splice(this.getRandomInt(2),1)];
@@ -51,6 +53,7 @@ class Presenter {
   }
 
   async evaluate(answer) {
+    //check, whether the task solved was the last task in that category
     let finalTask = false;
     if(this.m.getTaskCount(this.currentTaskType) === 1)
       finalTask = true;
@@ -58,19 +61,17 @@ class Presenter {
     this.tasksSolved++;
     this.prevTasks.push({task: this.currentTask, answer: answer, type: this.currentTaskType});
 
-    console.log("Presenter -> Antwort: " + answer);
-    let answerIdx = this.currentTask["a"].indexOf(answer);
+    let answerIdx = this.currentTask["a"].indexOf(answer);  //this is the index at which the given answer is in the original task
 
     if(await this.m.checkAnswer(this.currentTaskType, answerIdx)) {
-      console.log("correct");
       this.tasksCorrect++;
       this.v.displayResultScreen("Richtig! ",true, finalTask);
     }
     else {
-      console.log("wrong");
       this.v.displayResultScreen("Falsch! ", false, finalTask);
     }
 
+    //if there are no more tasks in this category, we disable this category
     if(finalTask) {
       this.v.closeTaskType(this.currentTaskType);
     }
@@ -92,16 +93,15 @@ class Presenter {
     p.start();
   }
 
+
+
   changeTaskType (taskType) {
     this.currentTaskType = taskType;
     this.loadTask();
   }
 
-
   //returns a random task from the current type
   async getNextTask() {
-    console.log("Presenter -> nächste Aufgabe: " + this.currentTaskType);
-
     let taskCount = this.m.getTaskCount(this.currentTaskType);
     let randTask = this.getRandomInt(taskCount - 1);
     return await this.m.getTask(this.currentTaskType, randTask);
