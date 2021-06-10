@@ -28,6 +28,11 @@ class View {
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: auto");
     document.getElementById("server").setAttribute("style","pointer-events: auto");
 
+    document.getElementById("teil-mathe").classList.remove("finishedCategory");
+    document.getElementById("teil-internettechnologien").classList.remove("finishedCategory");
+    document.getElementById("teil-allgemein").classList.remove("finishedCategory");
+    document.getElementById("server").classList.remove("finishedCategory");
+
     document.getElementById(this.p.getTaskType()).classList.add("selectCategory");
   }
 
