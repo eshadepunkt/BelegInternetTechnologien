@@ -17,7 +17,7 @@ class Model {
         {title: "Analysis", t:"\\frac{d}{dx} \\sin(x)\\enspace", a:["\\cos(x)", "-\\sin(x)", "\\sin(x)", "\\pi"]},
         {title: "Wurzelrechnung", t:"\\sqrt{169} \\enspace", a:["13", "19", "9", "14"]},
         {title: "Wurzelrechnung", t:"\\sqrt{484} \\enspace", a:["22", "21", "20", "48"]},
-        {title: "Potenzrechnung", t:"{16}^2 \\enspace", a:["22", "21", "20", "48"]},
+        {title: "Potenzrechnung", t:"{16}^2 \\enspace", a:["256", "160", "162", "600"]},
         {title: "Analysis", t:"\\lim\\limits_{x\\rightarrow\\infty} x^2 \\enspace", a:["\\infty", "0", "2", "-\\infty"]},
         {title: "Analysis", t:"\\lim\\limits_{x\\rightarrow\\infty} \\frac{1}{x} \\enspace", a:["0", "\\infty", "1", "-\\infty"]},
 
