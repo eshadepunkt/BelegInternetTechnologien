@@ -29,6 +29,11 @@ class View {
     document.getElementById("teil-allgemein").setAttribute("style","pointer-events: auto");
     document.getElementById("server").setAttribute("style","pointer-events: auto");
 
+    document.getElementById("teil-mathe").innerHTML = "<i class=\"fas fa-calculator\"></i> Mathematik";
+    document.getElementById("teil-internettechnologien").innerHTML = "<i class=\"fas fa-network-wired\"></i> Internettechnologien";
+    document.getElementById("teil-allgemein").innerHTML = "<i class=\"fas fa-university\"></i> Allgemein";
+    document.getElementById("server").innerHTML = "<i class=\"fas fa-server\"></i> Remote";
+
     document.getElementById("teil-mathe").classList.remove("finishedCategory");
     document.getElementById("teil-internettechnologien").classList.remove("finishedCategory");
     document.getElementById("teil-allgemein").classList.remove("finishedCategory");
